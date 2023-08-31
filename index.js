@@ -1,5 +1,6 @@
 const express = require('express')
 const Customer = require("./models/customersModel")
+const dotenv = require("dotenv").config();
 
 const mongoose = require('mongoose');
 
@@ -8,7 +9,7 @@ main().catch(err => console.log(err));
 async function main() {
 //   await mongoose.connect('mongodb://127.0.0.1:27017/test');
 
-  const connect = await mongoose.connect('mongodb+srv://syedfarazahmed:j2sueKf0WeQHHMHw@cluster0.vverwvr.mongodb.net/customersDb');
+  const connect = await mongoose.connect(process.env.CONNECTION_STRING);
   console.log("Database Connected: ", connect.connection.name);
 }
 
